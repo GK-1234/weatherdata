@@ -14,10 +14,13 @@ public class City {
 
 	@JsonProperty("id")
 	private Long id;
+	
 	@JsonProperty("name")
     private String name;
+	
 	@JsonProperty("findname")
     private String findname;
+	
 	@JsonProperty("country")
     private String country;
 

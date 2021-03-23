@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class FlatDataWeatherService {
@@ -24,8 +25,12 @@ public class FlatDataWeatherService {
         return weatherRepository.findAll();
     }
 
-    public Iterable<WeatherData> list(String city) {
-        return weatherRepository.findByCity(city);
+    public Optional<WeatherData> getWeatherById(Long id) {
+        return weatherRepository.findById(id);
+    }
+
+    public Optional<WeatherData> findByCityName(String city) {
+        return weatherRepository.findByCityName(city);
     }
 
     public WeatherData save(WeatherData weatherdata) {

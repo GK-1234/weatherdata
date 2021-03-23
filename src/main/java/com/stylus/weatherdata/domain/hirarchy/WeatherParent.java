@@ -13,7 +13,7 @@ import javax.persistence.*;
 @AllArgsConstructor
 @Entity
 //@NamedQuery(name = "WeatherData.findByCity", query = "select w from WeatherData w where w.City.name = ?1")
-public class WeatherData {
+public class WeatherParent {
 
 	//@JsonIgnoreProperties(ignoreUnknown=true)
 
@@ -45,5 +45,5 @@ public class WeatherData {
     private Weather weather;
 */
  
-    public WeatherData() {}
+    public WeatherParent() {}
 }
