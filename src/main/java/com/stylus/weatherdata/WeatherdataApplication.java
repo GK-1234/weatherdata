@@ -39,18 +39,19 @@ public class WeatherdataApplication {
 			mapper.disable(DeserializationFeature.FAIL_ON_UNRESOLVED_OBJECT_IDS);
 			TypeReference<WeatherData> typeReference = new TypeReference<WeatherData>(){};
 			
-			InputStream instream = TypeReference.class.getResourceAsStream("/weather_01.json");
-			BufferedReader reader = new BufferedReader(new InputStreamReader(instream));
+			InputStream inStream = TypeReference.class.getResourceAsStream("/data/test.json");
+			BufferedReader reader = new BufferedReader(new InputStreamReader(inStream));
 			String line;
 			int recCount = 0;
 			while ((line = reader.readLine()) != null) {
 				if (line.length()==0) break;
-				//WeatherData weatherData = mapper.readValue(instream, typeReference);
+				//WeatherData weatherData = mapper.readValue(inStream, typeReference);
 				try {
-				WeatherData weatherData = mapper.readValue(line, typeReference);
-				weatherService.save(weatherData);
-				recCount++;
-				System.out.println("Weatherdata Saved " + recCount);
+					WeatherData weatherData = mapper.readValue(line, typeReference);
+					System.out.println(weatherData.getCity().getName());
+					weatherService.save(weatherData);
+					recCount++;
+					System.out.println("Weatherdata Saved " + recCount);
 				} catch (Exception e) {
 					System.out.println("Weatherdata Saved " + recCount + "\n" + e.getMessage());
 				}
